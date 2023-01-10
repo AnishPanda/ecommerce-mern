@@ -12,9 +12,9 @@ const payment = require("./routes/paymentRoute");
 const cors = require("cors");
 
 // config
-if (process.env.NODE_ENV !== "PRODUCTION") {
-  require("dotenv").config();
-}
+// if (process.env.NODE_ENV !== "PRODUCTION") {
+require("dotenv").config();
+// }
 
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
