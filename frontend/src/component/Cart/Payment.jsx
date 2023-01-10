@@ -35,13 +35,18 @@ const Payment = () => {
 
     const {
       data: { key },
-    } = await axios.get("http://localhost:5000/api/v1/razorpaykey");
+    } = await axios.get(
+      "https://ecommerce-mern-anishpanda.vercel.app/api/v1/razorpaykey"
+    );
 
     const {
       data: { order },
-    } = await axios.post("http://localhost:5000/api/v1/payment/process", {
-      amount: orderInfo.totalPrice,
-    });
+    } = await axios.post(
+      "https://ecommerce-mern-anishpanda.vercel.app/api/v1/payment/process",
+      {
+        amount: orderInfo.totalPrice,
+      }
+    );
 
     const options = {
       key: key,
@@ -54,7 +59,7 @@ const Payment = () => {
         const { razorpay_payment_id, razorpay_order_id, razorpay_signature } =
           response;
         const { data: veryfyData } = await axios.post(
-          "http://localhost:5000/api/v1/verifypayment",
+          "https://ecommerce-mern-anishpanda.vercel.app/api/v1/verifypayment",
           {
             razorpay_payment_id,
             razorpay_order_id,
